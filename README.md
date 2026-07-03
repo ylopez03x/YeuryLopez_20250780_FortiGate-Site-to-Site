@@ -1,6 +1,12 @@
 # FortiGate VPN Site-to-Site
 **Autor:** Yeury Lopez | **Matrícula:** 20250780 | **Repositorio:** YeuryLopez_20250780_FortiGate-Site-to-Site
 
+## Video de demostración
+
+[![Ver en YouTube](https://img.shields.io/badge/YouTube-Ver%20Video-red?logo=youtube)](https://youtu.be/0Y3RkZxta1k)
+
+**Enlace directo:** https://youtu.be/0Y3RkZxta1k
+
 ---
 
 ## 1. Objetivo
@@ -10,11 +16,9 @@ Configurar una VPN Site-to-Site entre dos firewalls FortiGate, permitiendo la co
 
 ## 2. Topología
 
-```
-[Linux1] --- [FortiGate1] --- [ISP] --- [FortiGate2] --- [Linux2]
-```
 
-> 📸 **SCREENSHOT:** Insertar captura de la topología completa en EVE-NG
+> <img width="730" height="730" alt="image" src="https://github.com/user-attachments/assets/f1ff6336-7cc2-4c9d-b3c2-202dab1abefb" />
+
 
 ---
 
@@ -53,65 +57,36 @@ Configurar una VPN Site-to-Site entre dos firewalls FortiGate, permitiendo la co
 
 ### 5.1 Interfaces FortiGate1
 
-> 📸 **SCREENSHOT:** Insertar captura de `Network → Interfaces` en FortiGate1 mostrando port1 (LAN 192.168.7.1) y port2 (WAN 10.7.80.1)
+> <img width="1817" height="784" alt="image" src="https://github.com/user-attachments/assets/99418a2d-51c2-4ffc-bcbc-d8cc5733c5ca" />
+
 
 ### 5.2 VPN Wizard — Step 1 VPN Setup
 
-> 📸 **SCREENSHOT:** Insertar captura del Wizard mostrando Site to Site, No NAT between sites y FortiGate seleccionado
+> <img width="1417" height="460" alt="image" src="https://github.com/user-attachments/assets/c4d2acfa-ddd7-4615-9ad9-47933039c02f" />
+
 
 ### 5.3 VPN Wizard — Step 2 Authentication
 
-> 📸 **SCREENSHOT:** Insertar captura mostrando Remote IP 10.7.81.2, Outgoing Interface port2 y Pre-shared key Yeury0780
+> <img width="889" height="272" alt="image" src="https://github.com/user-attachments/assets/264814f2-f3de-45e0-8275-b045870ef2fe" />
+
+
 
 ### 5.4 VPN Wizard — Step 3 Policy & Routing
 
-> 📸 **SCREENSHOT:** Insertar captura mostrando Local interface port1, Local subnets 192.168.7.0/24 y Remote Subnets 192.168.80.0/24
+> <img width="1816" height="408" alt="image" src="https://github.com/user-attachments/assets/a3825fc2-0d75-41e0-b438-9609ba64e6d5" />
 
-### 5.5 VPN Wizard — Review Settings FortiGate1
-
-> 📸 **SCREENSHOT:** Insertar captura mostrando **"The VPN has been set up"** con todos los objetos creados
-
-### 5.6 VPN Wizard — FortiGate2
-
-> 📸 **SCREENSHOT:** Insertar captura del Wizard en FortiGate2 con la configuración espejo apuntando hacia 10.7.80.1
 
 ---
 
 ## 6. Verificación y Funcionamiento
 
-### 6.1 Estado del Túnel en FortiGate1
 
-Ir a: `VPN → IPSec Tunnels`
-> 📸 **SCREENSHOT:** Insertar captura mostrando el túnel **VPN-FGT1-FGT2** activo en verde
-
-### 6.2 Políticas de Firewall
-
-Ir a: `Policy & Objects → Firewall Policy`
-> 📸 **SCREENSHOT:** Insertar captura mostrando las políticas `vpn_VPN-FGT1-FGT2_local` y `vpn_VPN-FGT1-FGT2_remote` activas con acción ACCEPT
-
-### 6.3 Demostración de conectividad — Ping
+### 6.3 Demostración de conectividad — Ping and traceroute
 
 Ejecutar en Linux1:
 ```
 ping -c 4 192.168.80.2
 ```
-> 📸 **SCREENSHOT:** Insertar captura del ping exitoso desde Linux1 hacia Linux2
+> <img width="888" height="287" alt="image" src="https://github.com/user-attachments/assets/c40d5a29-f335-45d2-b7d3-be76999bd25d" />
 
-### 6.4 Demostración de conectividad — Traceroute
 
-Ejecutar en Linux1:
-```
-traceroute 192.168.80.2
-```
-> 📸 **SCREENSHOT:** Insertar captura del traceroute mostrando: Linux1 → FortiGate1 → FortiGate2 → Linux2
-
----
-
-## 7. Archivos del repositorio
-
-| Archivo | Descripción |
-|---|---|
-| `YeuryLopez_20250780_Script_P10.txt` | Script del video |
-| `YeuryLopez_20250780_Informe_P10.pdf` | Documentación técnica en PDF |
-| `YeuryLopez_20250780_Links_P10.txt` | Enlace al video |
-| `README.md` | Este archivo |
